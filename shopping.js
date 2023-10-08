@@ -5,13 +5,36 @@ function getItemInfo(textId, priceId) {
 
 
 
-    const previousTotalPrice = document.getElementById('total-price');
-    const previousTotalString = previousTotalPrice.innerText;
+    const previousTotalPriceField = document.getElementById('total-price');
+    const previousTotalString = previousTotalPriceField.innerText;
     const previousTotalPriceValue = parseFloat(previousTotalString);
 
     const sumPriceTotal = previousTotalPriceValue + newTotalPrice;
-    previousTotalPrice.innerText = sumPriceTotal;
-    console.log(sumPriceTotal);
+    previousTotalPriceField.innerText = sumPriceTotal;
+
+
+    if (sumPriceTotal > 0) {
+        document.getElementById('purchase-btn').disabled = false;
+        if (sumPriceTotal >= 200) {
+            document.getElementById('apply-btn').disabled = false;
+            document.getElementById('apply-btn').addEventListener('click', function () {
+                const couponField = document.getElementById('coupon-field').value;
+                if (couponField === 'SELL20') {
+                    const discountPrice = sumPriceTotal * (20 / 100);
+                    console.log(discountPrice);
+                    const discountPriceField = document.getElementById('discount-price');
+                    const discountPriceFieldString = discountPriceField.innerText;
+                    const discountPriceFieldValue = parseFloat(discountPriceFieldString);
+                    discountPriceField.innerText = discountPrice.toFixed(2);
+
+                }
+            })
+
+
+
+        }
+
+    }
 
     // previousTotalPrice.innerText = sumPriceTotal;
 
