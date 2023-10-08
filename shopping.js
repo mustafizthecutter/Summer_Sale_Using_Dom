@@ -13,6 +13,7 @@ function getItemInfo(textId, priceId) {
     previousTotalPriceField.innerText = sumPriceTotal;
 
 
+
     if (sumPriceTotal > 0) {
         document.getElementById('purchase-btn').disabled = false;
         if (sumPriceTotal >= 200) {
@@ -23,10 +24,15 @@ function getItemInfo(textId, priceId) {
                     const discountPrice = sumPriceTotal * (20 / 100);
                     console.log(discountPrice);
                     const discountPriceField = document.getElementById('discount-price');
-                    const discountPriceFieldString = discountPriceField.innerText;
-                    const discountPriceFieldValue = parseFloat(discountPriceFieldString);
+                    const discountPriceString = discountPriceField.innerText;
+                    const discountPriceValue = parseFloat(discountPriceString);
                     discountPriceField.innerText = discountPrice.toFixed(2);
 
+                    const totalPrice = document.getElementById('total');
+                    const totalPriceString = totalPrice.innerText;
+                    const totalPriceValue = parseFloat(totalPriceString);
+                    const total = sumPriceTotal - discountPrice;
+                    totalPrice.innerText = total.toFixed(2);
                 }
             })
 
