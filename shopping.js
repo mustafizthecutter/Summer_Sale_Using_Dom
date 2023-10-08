@@ -1,9 +1,8 @@
 function getItemInfo(textId, priceId) {
     const textNames = document.getElementById(textId).childNodes[3].childNodes[3].innerText;
     const priceValue = document.getElementById(priceId).childNodes[3].childNodes[5].innerText;
+
     const newTotalPrice = parseFloat(priceValue.split(' ')[0]);
-
-
 
     const previousTotalPriceField = document.getElementById('total-price');
     const previousTotalString = previousTotalPriceField.innerText;
@@ -12,17 +11,16 @@ function getItemInfo(textId, priceId) {
     const sumPriceTotal = previousTotalPriceValue + newTotalPrice;
     previousTotalPriceField.innerText = sumPriceTotal;
 
-
-
     if (sumPriceTotal > 0) {
         document.getElementById('purchase-btn').disabled = false;
+
         if (sumPriceTotal >= 200) {
             document.getElementById('apply-btn').disabled = false;
             document.getElementById('apply-btn').addEventListener('click', function () {
                 const couponField = document.getElementById('coupon-field').value;
                 if (couponField === 'SELL20') {
                     const discountPrice = sumPriceTotal * (20 / 100);
-                    console.log(discountPrice);
+
                     const discountPriceField = document.getElementById('discount-price');
                     const discountPriceString = discountPriceField.innerText;
                     const discountPriceValue = parseFloat(discountPriceString);
@@ -35,28 +33,14 @@ function getItemInfo(textId, priceId) {
                     totalPrice.innerText = total.toFixed(2);
                 }
             })
-
-
-
         }
-
     }
 
-    // previousTotalPrice.innerText = sumPriceTotal;
+    document.getElementById('purchase-btn').addEventListener('click', function () {
 
-
-    // const price = sumPriceTotal + newTotalPrice;
-
-
-    // value = value
+    })
 
     setText('cart-list-container', textNames);
-
-}
-function getPrice(value) {
-    const getValues = getItemInfo(value);
-    parseFloat(previousTotalPriceString);
-    console.log(previousTotalPrice);
 }
 
 function setText(appendElement, textValue) {
@@ -66,4 +50,6 @@ function setText(appendElement, textValue) {
     p.innerHTML = ` ${count + 1.} ${'.'} ${textValue}`
     cartContainer.appendChild(p);
 }
-
+function btnClick() {
+    window.location.href = 'index.html';
+}
